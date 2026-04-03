@@ -1,0 +1,151 @@
+/* Main My Work Section */
+.mywork {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 8%;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #ffffff;
+}
+
+/* My Work Title Section (Matches previous sections) */
+.mywork-title {
+  position: relative;
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.mywork-title h1 {
+  font-size: 55px;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(90deg, #00c6ff, #8e2de2, #f11276);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientText 5s linear infinite;
+}
+
+.mywork-title img {
+  position: absolute;
+  bottom: -10px;
+  right: -30px;
+  z-index: -1;
+  opacity: 0.6; 
+}
+
+/* Projects Grid Container */
+.mywork-container {
+  display: grid;
+  /* Auto-fits columns based on screen size. Min width 300px per project */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  width: 100%;
+}
+
+/* Individual Project Image */
+.mywork-format {
+  width: 100%;
+  height: 300px; /* Standardize height for all images */
+  object-fit: cover; /* Ensures images don't stretch unnaturally */
+  border-radius: 16px;
+  cursor: pointer;
+  /* Default subtle border and glass shadow */
+  border: 2px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  /* Smooth transition for hover effects */
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              border-color 0.4s ease, 
+              box-shadow 0.4s ease;
+}
+
+/* Hover Effect for Project Images */
+.mywork-format:hover {
+  transform: scale(1.05) translateY(-5px); /* Pops up and scales */
+  border-color: #00c6ff; /* Blue neon border */
+  box-shadow: 0 15px 35px rgba(0, 198, 255, 0.3), 
+              0 0 15px rgba(142, 45, 226, 0.2); /* Neon glow */
+  z-index: 2;
+}
+
+/* Show More Button */
+.mywork-showmore {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 60px;
+  padding: 16px 40px;
+  border-radius: 50px;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Creating the gradient hover fill for the button */
+.mywork-showmore::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, #00c6ff, #8e2de2);
+  z-index: -1;
+  transition: opacity 0.4s ease;
+  opacity: 0; 
+}
+
+.mywork-showmore p {
+  margin: 0;
+}
+
+.mywork-showmore img {
+  width: 20px;
+  transition: transform 0.4s ease;
+}
+
+/* Hover effects for Show More Button */
+.mywork-showmore:hover {
+  border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(142, 45, 226, 0.4);
+}
+
+.mywork-showmore:hover::before {
+  opacity: 1; /* Shows the gradient background */
+}
+
+.mywork-showmore:hover img {
+  transform: translateX(8px); /* Arrow shoots to the right */
+}
+
+/* Responsive adjustments for Mobile/Tablets */
+@media (max-width: 899px) {
+  .mywork-title h1 {
+    font-size: 45px;
+  }
+  
+  .mywork-title img {
+    right: 0;
+    width: 120px;
+  }
+
+  .mywork-container {
+    gap: 30px;
+    grid-template-columns: 1fr; /* Single column on small phones */
+  }
+
+  .mywork-format {
+    height: 250px; /* Slightly shorter images on mobile */
+  }
+
+  .mywork-showmore {
+    margin-top: 40px;
+    padding: 14px 35px;
+    font-size: 16px;
+  }
+}

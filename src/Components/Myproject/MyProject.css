@@ -1,0 +1,273 @@
+/* Main Project Section Container */
+.myproject {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 8%;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #ffffff;
+  position: relative;
+}
+
+/* Dynamic Background Glow */
+.myproject-bg-glow {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70vw;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(0, 198, 255, 0.08) 0%, rgba(142, 45, 226, 0.08) 40%, transparent 70%);
+  filter: blur(60px);
+  z-index: 0;
+  animation: pulseBg 6s infinite alternate;
+}
+
+@keyframes pulseBg {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  100% { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* Section Title */
+.myproject-title {
+  position: relative;
+  margin-bottom: 80px;
+  z-index: 2;
+}
+
+.myproject-title h1 {
+  font-size: 55px;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(90deg, #00c6ff, #8e2de2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.myproject-title img {
+  position: absolute;
+  bottom: -10px;
+  right: -30px;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+/* Grid Container for Cards */
+.myproject-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 60px;
+  z-index: 2;
+}
+
+/* =========================================
+   PREMIUM PROJECT CARDS (Subtle Vertical Float)
+========================================= */
+
+.project-card {
+  background: rgba(20, 20, 25, 0.6); 
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  /* Hover වෙනකොට මාරම Smooth වෙන්න transition එක හැදුවා */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+  /* Breathing Animation එක (උඩට පල්ලෙහාට යන්තම් පාවෙනවා) */
+  animation: floatVertical 6s ease-in-out infinite;
+}
+
+/* 🌟 Keyframes: ඉහළට සහ පහළට සියුම්ව චලනය වීම (8px පමණක්) */
+@keyframes floatVertical {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); } /* යන්තම් උඩට ඉස්සෙනවා */
+  100% { transform: translateY(0px); }
+}
+
+/* Cards එකින් එකට යන්තම් delay එකක් දෙනවා */
+.project-card:nth-child(1) { animation-delay: 0s; }
+.project-card:nth-child(2) { animation-delay: 1.5s; }
+.project-card:nth-child(3) { animation-delay: 3s; }
+
+/* 🌟 Card Hover State (Mouse එක ගෙනිච්චම Animation එක නැවතිලා ලස්සනට උඩට එනවා) */
+.project-card:hover {
+  animation-play-state: paused; 
+  transform: translateY(-15px) scale(1.02); /* අනිත් ඒවට වඩා කැපිලා පේන්න උඩට එනවා */
+  border-color: rgba(0, 198, 255, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(142, 45, 226, 0.2);
+  z-index: 10;
+}
+
+/* =========================================
+   IMAGE SECTION WITH HOVER ZOOM
+========================================= */
+
+.project-image-container {
+  width: 100%;
+  height: 220px;
+  position: relative;
+  overflow: hidden; /* Keeps the zoomed image inside */
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease; /* Smooth zoom transition */
+}
+
+/* Image zooms in when the card is hovered */
+.project-card:hover .project-img {
+  transform: scale(1.1);
+}
+
+/* Gradient overlay to blend image with the card background */
+.project-image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(to top, rgba(20, 20, 25, 1) 0%, transparent 100%);
+}
+
+/* Project Number Badge */
+.project-category-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #00c6ff;
+  border: 1px solid rgba(0, 198, 255, 0.3);
+}
+
+/* =========================================
+   CONTENT SECTION
+========================================= */
+
+.project-content {
+  padding: 0 25px 30px 25px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.project-content h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 15px 0;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.project-card:hover .project-content h3 {
+  color: #00c6ff;
+}
+
+.project-content p {
+  font-size: 15px;
+  color: #b3b3b3;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+  flex-grow: 1;
+}
+
+/* Tech Stack Tags */
+.project-tech {
+  margin-bottom: 25px;
+}
+
+.project-tech span {
+  display: inline-block;
+  background: linear-gradient(90deg, rgba(0,198,255,0.1), rgba(142,45,226,0.1));
+  padding: 6px 15px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #00c6ff;
+  border-left: 2px solid #8e2de2;
+}
+
+/* Premium Visit Button */
+.project-btn {
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease;
+}
+
+.arrow-icon {
+  transition: transform 0.4s ease;
+}
+
+/* Button Hover State */
+.project-btn:hover {
+  background: linear-gradient(90deg, #00c6ff, #8e2de2);
+  border-color: transparent;
+  box-shadow: 0 5px 15px rgba(142, 45, 226, 0.3);
+}
+
+.project-btn:hover .arrow-icon {
+  transform: translateX(5px);
+}
+
+/* =========================================
+   SHOW MORE BUTTON
+========================================= */
+.myproject-showmore {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 40px;
+  border-radius: 50px;
+  border: 2px solid #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  z-index: 2;
+}
+
+.myproject-showmore:hover {
+  background: linear-gradient(90deg, #00c6ff, #8e2de2);
+  border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(142, 45, 226, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .myproject {
+    padding: 60px 5%;
+  }
+  
+  .myproject-title h1 {
+    font-size: 40px;
+  }
+
+  .project-image-container {
+    height: 180px;
+  }
+}

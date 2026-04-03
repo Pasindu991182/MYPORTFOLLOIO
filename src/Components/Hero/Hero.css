@@ -1,0 +1,192 @@
+/* Hero Section Container (Left & Right Layout) */
+.hero {
+  display: flex;
+  flex-direction: row; /* Image left, Text right */
+  align-items: center;
+  justify-content: center;
+  gap: 80px; /* Space between image and text */
+  padding: 40px 8%;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #ffffff; 
+  background: radial-gradient(circle at 50% 50%, rgba(142, 45, 226, 0.05) 0%, transparent 60%);
+  min-height: 80vh; /* Keeps it perfectly centered on screen */
+}
+
+/* Left Side - Image Container */
+.hero-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Profile Image - Modern Rounded Rectangle Size */
+.hero-image {
+  width: 380px; /* Bigger width */
+  height: 450px; /* Rectangle shape */
+  border-radius: 24px; /* Soft rounded corners instead of full circle */
+  object-fit: cover; /* Keeps image quality without stretching */
+  border: 4px solid transparent;
+  background: linear-gradient(#111, #111) padding-box, 
+              linear-gradient(135deg, #00c6ff, #8e2de2) border-box; /* Gradient Border */
+  box-shadow: 0 15px 40px rgba(142, 45, 226, 0.3);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Right Side - Text Container */
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Aligns text to the left */
+  text-align: left;
+  max-width: 600px;
+}
+
+/* Hero Title */
+.hero-title {
+  font-size: 65px;
+  font-weight: 800;
+  margin: 0 0 20px 0;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.hero-title span {
+  background: linear-gradient(90deg, #00c6ff, #8e2de2, #f11276);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientText 5s linear infinite;
+}
+
+@keyframes gradientText {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Hero Description */
+.hero-description {
+  font-size: 20px;
+  color: #cccccc; 
+  margin: 0 0 40px 0;
+  line-height: 1.7;
+}
+
+/* Action Buttons Container */
+.hero-action {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+/* Primary Button */
+.hero-connect {
+  display: inline-block;
+  text-decoration: none;
+  padding: 16px 42px;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #00c6ff, #0072ff, #8e2de2);
+  background-size: 200% auto;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 15px rgba(142, 45, 226, 0.3);
+}
+
+.hero-connect:hover {
+  background-position: right center;
+  transform: translateY(-4px) scale(1.02); 
+  box-shadow: 0 12px 30px rgba(142, 45, 226, 0.5);
+  color: #ffffff;
+}
+
+/* Secondary Button */
+.hero-resume {
+  display: inline-block;
+  text-decoration: none;
+  padding: 14px 40px; 
+  border-radius: 50px;
+  background: transparent;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid #00c6ff;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-resume::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, #00c6ff, #8e2de2);
+  z-index: -1;
+  transition: opacity 0.4s ease;
+  opacity: 0; 
+}
+
+.hero-resume:hover::before {
+  opacity: 1; 
+}
+
+.hero-resume:hover {
+  border-color: transparent;
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 198, 255, 0.4);
+  color: #ffffff;
+}
+
+/* ============================
+   RESPONSIVE DESIGN (Tablets & Mobile)
+============================ */
+@media (max-width: 950px) {
+  .hero {
+    flex-direction: column; /* Stack image on top, text below for smaller screens */
+    padding: 60px 5%;
+    text-align: center;
+    gap: 50px;
+  }
+  
+  .hero-right {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-image {
+    width: 100%;
+    max-width: 350px; /* Prevents it from getting too big on tablets */
+    height: auto;
+    aspect-ratio: 4/5; /* Maintains the rectangle proportion */
+  }
+
+  .hero-title {
+    font-size: 45px; 
+  }
+
+  .hero-description {
+    font-size: 18px;
+  }
+
+  .hero-action {
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .hero-connect, .hero-resume {
+    width: 100%; 
+    max-width: 320px;
+    text-align: center;
+  }
+}

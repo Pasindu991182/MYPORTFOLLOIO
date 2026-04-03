@@ -1,0 +1,201 @@
+/* Enable Smooth Scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Navbar Container */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 8%; 
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: transparent;
+  position: relative;
+  z-index: 100; /* Ensures navbar stays on top */
+}
+
+/* =========================================
+   LOGO STYLING (Oval / Pill Shape)
+========================================= */
+.logo {
+  width: 230px; 
+  height: 85px; /* max-height වෙනුවට height එක fix කළා oval හැඩය එන්න */
+  object-fit: contain; 
+  cursor: pointer;
+  transition: all 0.4s ease;
+  
+  /* 🌟 Oval Shape Styles */
+  border-radius: 50px; /* මේකෙන් තමයි ලස්සන Oval හැඩය එන්නේ */
+  background: rgba(255, 255, 255, 0.03); /* යන්තම් පේන Glass පසුබිමක් */
+  padding: 10px 20px; /* Logo එකයි Border එකයි අතර space එක */
+  border: 1px solid rgba(255, 255, 255, 0.08); /* වටේට සියුම් ඉරක් */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Mouse එක ගෙනිච්චම පට්ට Neon effect එකක් එනවා */
+.logo:hover {
+  transform: scale(1.05); /* ටිකක් ලොකු වෙනවා */
+  background: rgba(255, 255, 255, 0.06); /* පසුබිම ටිකක් එළිය වෙනවා */
+  border-color: rgba(0, 198, 255, 0.5); /* Oval එක වටේ border එක නිල් වෙනවා */
+  box-shadow: 0 0 20px rgba(0, 198, 255, 0.4); /* Cyan පාට Neon glow එකක් */
+}
+
+/* ========================================= */
+
+/* Mobile Open Menu Icon (Hidden on Desktop) */
+.nav-mob-open {
+  display: none;
+  width: 35px;
+  cursor: pointer;
+}
+
+/* Mobile Close Menu Icon (Hidden by default) */
+.nav-mob-close {
+  display: none;
+}
+
+/* Navigation Menu */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 40px;
+  font-size: 18px; 
+  font-weight: 700; 
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* Menu Items */
+.nav-menu li {
+  cursor: pointer;
+  position: relative;
+  letter-spacing: 1px; 
+  transition: color 0.3s ease;
+}
+
+/* Fix for Anchor Tags */
+.nav-menu li a {
+  text-decoration: none;
+  color: #ffffff; 
+  transition: color 0.3s ease;
+  display: block; 
+}
+
+/* Hover Effects */
+.nav-menu li:hover a {
+  color: #00c6ff; 
+}
+
+.nav-menu li::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -6px;
+  left: 0;
+  background: linear-gradient(90deg, #00c6ff, #8e2de2);
+  transition: width 0.3s ease;
+}
+
+.nav-menu li:hover::after {
+  width: 100%;
+}
+
+/* Connect Button */
+.nav-connect {
+  padding: 14px 30px;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #00c6ff, #0072ff, #8e2de2);
+  background-size: 200% auto; 
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 15px rgba(142, 45, 226, 0.2);
+  text-decoration: none; 
+  display: inline-block;
+}
+
+.nav-connect:hover {
+  background-position: right center; 
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 20px rgba(142, 45, 226, 0.4);
+  color: #ffffff; 
+}
+
+.nav-connect:active {
+  transform: translateY(0); 
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (MOBILE & TABLET)
+========================================= */
+@media (max-width: 900px) {
+  
+  .navbar {
+    padding: 20px 5%;
+  }
+
+  .logo {
+    width: 170px; /* Mobile එකේදී ගානට පේන්න size එක හැදුවා */
+    height: 60px; /* Mobile එකට ගැලපෙන Oval උස */
+    padding: 6px 15px; /* Padding එකත් පොඩි කළා */
+  }
+
+  /* Show the hamburger menu icon */
+  .nav-mob-open {
+    display: block;
+  }
+
+  /* Hide the Connect button on mobile to save space */
+  .nav-connect {
+    display: none; 
+  }
+
+  /* Side Menu Styles (Glassmorphism) */
+  .nav-menu {
+    position: fixed;
+    flex-direction: column;
+    align-items: flex-start;
+    top: 0;
+    /* Starts off-screen to the right */
+    right: -350px;
+    width: 300px; /* Width of the side menu */
+    height: 100vh;
+    background: #111116; /* Dark background */
+    z-index: 100;
+    transition: right 0.5s ease; /* Smooth slide animation */
+    padding: 80px 40px;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    /* Border on the left side to separate it from content */
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Show the close icon inside the side menu */
+  .nav-mob-close {
+    display: block;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .nav-mob-close:hover {
+    transform: rotate(90deg); /* Cool spin effect on close icon */
+  }
+
+  .nav-menu li {
+    font-size: 22px; /* Bigger font for mobile readability */
+    margin-bottom: 25px;
+  }
+
+  /* Adjust underline animation for side menu */
+  .nav-menu li::after {
+    bottom: -10px;
+  }
+}
